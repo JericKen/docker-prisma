@@ -3,6 +3,7 @@ services:
     build: ./api
     ports:
       - "3000:3000"
+      - "5555:5555"
     volumes:
       - ./api:/app
       - /app/node_modules
@@ -15,7 +16,7 @@ services:
     image: postgres:17
     environment:
       POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_\PASSWORD}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
       POSTGRES_DB: ${PG_DATABASE}
     ports:
       - "5432:5432"

@@ -99,6 +99,16 @@ exports.Prisma.ProductScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.SaleScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -111,7 +121,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Product: 'Product'
+  Product: 'Product',
+  User: 'User',
+  Sale: 'Sale'
 };
 /**
  * Create the Client
@@ -160,13 +172,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "ca508299ad54f76bbf72ffb386cb4adab01362c47b82a48d18e6d0851d135e92",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n}\n\nmodel User {\n  id   Int    @id @default(autoincrement())\n  name String\n}\n\nmodel Sale {\n  id   Int    @id @default(autoincrement())\n  name String\n}\n",
+  "inlineSchemaHash": "fa3b6b9189df4e67be6e8f63be939758b8242df76ca93d61dd5c79f16a6fb89b",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Sale\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
